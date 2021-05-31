@@ -1,18 +1,30 @@
-
+import unittest
 from problem1 import *
 
-class tests:
+class TestsNpPractice(unittest.TestCase):
     total_grade_ = 0
+    total_grade_file = open("TotalGrade.txt","w")
+
+    @classmethod
+    def setUpClass(cls):
+        TestsNpPractice.total_grade_file.write(str(0))
+
+    @classmethod
+    def tearDownClass(cls):
+        TestsNpPractice.total_grade_file.truncate(0)
+        TestsNpPractice.total_grade_file.write(str(TestsNpPractice.total_grade_))
+        TestsNpPractice.total_grade_file.close()
+        
     def IncGrade(p):
-        tests.total_grade_ += p
+        TestsNpPractice .total_grade_ += p
 
-    def TEST_unit_vector():
-
+    def test_unit_vector(self):
         """Check that unitvector returns the correct output for several inputs"""
         test.assert_equal(unit_vector(4, 1), np.array([0, 1, 0, 0]))
         test.assert_equal(unit_vector(2, 0), np.array([1, 0]))
-        tests.IncGrade(1)
+        TestsNpPractice.IncGrade(1)
 
+    def test_unit_vector_limits(self):
         """Check that squares raises an error for invalid inputs"""
         with test.assert_raises(ValueError):
             unit_vector(-1,0)
@@ -20,22 +32,8 @@ class tests:
             unit_vector(4,4)
         with test.assert_raises(ValueError):
             unit_vector(4,-1)
-        tests.IncGrade(1)
+        TestsNpPractice.IncGrade(1)
 
-    def RunTestsAndCalcGrade():
-        # here we run all the tests
-        tests.TEST_unit_vector()
-        
-        # here we store the final grade in file for inginious
-        total_grade_file = open("TotalGrade.txt","w")
-        print("Your Total Grade is: ",tests.total_grade_)
-        total_grade_file.write(str(tests.total_grade_))
-        total_grade_file.close()
-
-
-def main():
-    t=tests;
-    t.RunTestsAndCalcGrade()
 
 if __name__ == '__main__':
-    main()
+    unittest.main()
