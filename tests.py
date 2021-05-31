@@ -3,7 +3,7 @@ from problem1 import *
 
 class TestsNpPractice(unittest.TestCase):
     total_grade_ = 0
-    total_grade_file = open("TotalGrade.txt","w")
+    total_grade_file = open("total_grade.txt","w")
 
     @classmethod
     def setUpClass(cls):
