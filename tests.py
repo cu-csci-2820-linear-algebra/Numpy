@@ -1,5 +1,5 @@
 import unittest
-from problem1 import *
+from nppractice import *
 
 class TestsNpPractice(unittest.TestCase):
     total_grade_ = 0
