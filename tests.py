@@ -1,4 +1,5 @@
 import unittest
+import sys
 from nppractice import *
 
 class TestsNpPractice(unittest.TestCase):
@@ -12,7 +13,7 @@ class TestsNpPractice(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         TestsNpPractice.total_grade_file.truncate(0)
-        print("\nTotal: ", TestsNpPractice.total_grade_)
+        print('\nTotal: ', TestsNpPractice.total_grade_)
         TestsNpPractice.total_grade_file.write(str(TestsNpPractice.total_grade_))
         TestsNpPractice.total_grade_file.close()
         
@@ -42,9 +43,8 @@ class TestsNpPractice(unittest.TestCase):
         alpha = 0.14833610379597723
         beta = -0.08612337722509229
         test.assert_equal(axpby(alpha, u, beta, v), None)
-        TestsNpPractice.IncGrade(20)
         test.assert_almost_equal(v, np.array([0.05493862, 0.01755234, 0.11991796, 0.11097833]))
-        TestsNpPractice.IncGrade(20)
+        TestsNpPractice.IncGrade(40)
 
     def test_final_grade(self):
         # first check that all grades = 1 gives final grade = 1
